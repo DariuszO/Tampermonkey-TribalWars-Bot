@@ -1,22 +1,23 @@
 // ==UserScript==
 // @name         Tribal wars
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.2.1-pl
 // @description  Tribal wars bot
 // @author       Eric Kavalec
-// @match        https://enXX.tribalwars.net/*
+// @editor       Dariusz Ochota
+// @match        https://plXX.plemiona.pl/*
 // @grant        none
 // ==/UserScript==
 
 //*************************** SETUP ***************************//
 // Choose Minimum and maximum wait time between actions (in milliseconds)
 const MIN_WAIT_TIME = 20000;
-const MAX_WAIT_TIME = 40000;
+const MAX_WAIT_TIME = 80000;
 //Enter The Start/End of the Night Bonus of your World (0-24). To disable set both values to 0.
-const NIGHT_BONUS_START = 23;
-const NIGHT_BONUS_END = 7;
+const NIGHT_BONUS_START = 24;
+const NIGHT_BONUS_END = 8;
 //Enter the Maximal pssible (or desired) amount of attacks, calculated by total amount of troops divided by your chosen Farm_Troop_Set
-const MAX_ATT_POSS = 5;
+const MAX_ATT_POSS = 1;
 // Choose the bot's actions
 // PHASE_1: The bot automatically queues buildings
 // PHASE_2: The bot automatically queues buildings and farms villages 
@@ -26,23 +27,23 @@ const PHASE = "PHASE_1";
 const WAIT_FOR_ORDER_BUILDINGS = false;
 // Enter the coordinates of the villages you want to farm 
 const FARM_COORDINATES = [
-    '000|000', '000|000', '000|000'
+    '284|655', '284|656'
 ];
 // Choose your farming troops template
 const FARM_TROOP_SET = "FARM_TROOP_SET_3";
 // Define your farming troops template
 let farmTroopSets = {
     "FARM_TROOP_SET_1":{
-        "spear" : 10,
-        "sword" : 10
+        "spear" : 64,
+        "sword" : 44
     },
     "FARM_TROOP_SET_2":{
-        "spear" : 15,
-        "axe" : 3
+        "spear" : 64,
+        "axe" : 294
     },
     "FARM_TROOP_SET_3":{
-        "lc" : 8,
-        "spy" : 1
+        "lc" : 104,
+        "spy" : 10
     }
 };
 //*************************** /SETUP ***************************//
@@ -59,7 +60,7 @@ const FALSE = "false";
 (function() {
     'use strict';
 
-    console.log("-- Tribal Wars script enabled --");
+    console.log("-- Bot do Plemion uruchomiony --");
 
     if (PHASE == "PHASE_1"){
         executePhase1();
